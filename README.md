@@ -30,9 +30,6 @@ Site 100% estático — sem passo de build. O Vercel detecta automaticamente
 
 ## Pendências antes de publicar em produção
 
-- **`pote.webp`** e **`capa.webp`** são placeholders ilustrativos gerados a
-  partir da identidade visual do projeto (paleta terracota + motivo das
-  marcas do torno de oleiro). Substitua pelas fotos reais quando disponíveis.
 - **Foto da Carolina** (seção "Quem conduz"): hoje é um bloco de texto
   (`.portrait .ph`). Troque pelo `<img>` comentado em `index.html` assim que
   tiver a foto.
