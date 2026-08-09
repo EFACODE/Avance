@@ -97,7 +97,12 @@ p{margin:0 0 20px}
   transition:background .25s,color .25s;white-space:nowrap;
 }
 .nav-cta:hover{background:var(--clay);color:var(--cream-2)}
-@media(min-width:900px){.nav-links{display:flex}}
+.nav-ctas{display:flex;align-items:center;gap:12px}
+.nav-ctas .nav-cta.secondary{display:none}
+@media(min-width:900px){
+  .nav-links{display:flex}
+  .nav-ctas .nav-cta.secondary{display:inline-block}
+}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(46px,8vw,86px) 0 0;text-align:center;position:relative}
@@ -308,10 +313,12 @@ p{margin:0 0 20px}
       <a href="#discipulado">O discipulado</a>
       <a href="#jornada">A jornada</a>
       <a href="#recursos">Recursos</a>
-      <a href="#carolina">Carolina</a>
-      <a href="#facilitadora">Seja facilitadora</a>
+      <a href="#carolina">A Autora</a>
     </div>
-    <a href="#inscricao" class="nav-cta">Quero participar</a>
+    <div class="nav-ctas">
+      <a href="#facilitadora" class="nav-cta secondary">Seja facilitadora</a>
+      <a href="#inscricao" class="nav-cta">Quero participar</a>
+    </div>
   </div>
 </nav>
 
