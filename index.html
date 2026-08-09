@@ -187,14 +187,15 @@ p{margin:0 0 20px}
 .mod:hover .num{opacity:.85}
 
 /* ---------- carolina ---------- */
-.carol{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+.carol{max-width:700px;margin:0 auto}
 .carol .portrait{
-  position:relative;border:1px solid var(--line);background:var(--cream-3);
-  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-  max-width:70%;margin-inline:auto;
+  float:left;shape-margin:12px;
+  width:180px;aspect-ratio:4/5;
+  border:1px solid var(--line);overflow:hidden;
+  margin:6px 28px 20px 0;
 }
-.carol .portrait img{width:100%;height:100%;object-fit:cover}
+.carol .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.carol::after{content:"";display:block;clear:both}
 .carol .ph{
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-soft);
   text-align:center;padding:20px;line-height:2;
@@ -205,9 +206,12 @@ p{margin:0 0 20px}
 }
 .carol .sig{
   font-family:var(--serif);font-size:24px;color:var(--green);margin-top:26px;
+  clear:both;
 }
 .carol .sig small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green-soft);margin-top:6px}
-@media(min-width:880px){.carol{grid-template-columns:0.85fr 1.15fr;gap:64px}}
+@media(max-width:560px){
+  .carol .portrait{float:none;width:150px;margin:0 auto 24px}
+}
 
 /* ---------- livro ---------- */
 .livro{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
@@ -487,13 +491,13 @@ p{margin:0 0 20px}
 </section>
 
 <section class="sec" id="carolina">
-  <div class="wrap carol">
-    <div class="portrait rv">
-      <img src="carolina.webp" alt="Carolina Feres Busato">
-    </div>
-    <div>
+  <div class="wrap">
+    <div class="carol">
       <p class="eyebrow rv">Quem conduz</p>
       <h2 class="title rv">Sobre a autora</h2>
+      <div class="portrait rv">
+        <img src="carolina.webp" alt="Carolina Feres Busato">
+      </div>
       <p class="quote rv">“A Palavra que Deus falou ao meu coração foi: AVANCE. Não pare. Não retroceda.”</p>
       <p class="rv">Olá, querida mulher! Seja muito bem-vinda, você que decidiu avançar no relacionamento e no conhecimento de Jesus. Essa é a melhor decisão da sua vida.</p>
       <p class="rv">A jornada que começa agora será linda, cheia de descobertas, ajustes, restaurações e crescimento. Será um tempo de aparar arestas, aprender, amadurecer, rir e também chorar.</p>
