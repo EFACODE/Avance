@@ -97,7 +97,12 @@ p{margin:0 0 20px}
   transition:background .25s,color .25s;white-space:nowrap;
 }
 .nav-cta:hover{background:var(--clay);color:var(--cream-2)}
-@media(min-width:900px){.nav-links{display:flex}}
+.nav-ctas{display:flex;align-items:center;gap:12px}
+.nav-ctas .nav-cta.secondary{display:none}
+@media(min-width:900px){
+  .nav-links{display:flex}
+  .nav-ctas .nav-cta.secondary{display:inline-block}
+}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(46px,8vw,86px) 0 0;text-align:center;position:relative}
@@ -182,13 +187,15 @@ p{margin:0 0 20px}
 .mod:hover .num{opacity:.85}
 
 /* ---------- carolina ---------- */
-.carol{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+.carol{max-width:700px;margin:0 auto}
 .carol .portrait{
-  position:relative;border:1px solid var(--line);background:var(--cream-3);
-  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
+  float:left;shape-margin:12px;
+  width:180px;aspect-ratio:4/5;
+  border:1px solid var(--line);overflow:hidden;
+  margin:6px 28px 20px 0;
 }
-.carol .portrait img{width:100%;height:100%;object-fit:cover}
+.carol .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.carol::after{content:"";display:block;clear:both}
 .carol .ph{
   font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-soft);
   text-align:center;padding:20px;line-height:2;
@@ -199,9 +206,12 @@ p{margin:0 0 20px}
 }
 .carol .sig{
   font-family:var(--serif);font-size:24px;color:var(--green);margin-top:26px;
+  clear:both;
 }
 .carol .sig small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--green-soft);margin-top:6px}
-@media(min-width:880px){.carol{grid-template-columns:0.85fr 1.15fr;gap:64px}}
+@media(max-width:560px){
+  .carol .portrait{float:none;width:150px;margin:0 auto 24px}
+}
 
 /* ---------- livro ---------- */
 .livro{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
@@ -307,9 +317,12 @@ p{margin:0 0 20px}
       <a href="#discipulado">O discipulado</a>
       <a href="#jornada">A jornada</a>
       <a href="#recursos">Recursos</a>
-      <a href="#carolina">Carolina</a>
+      <a href="#carolina">A Autora</a>
     </div>
-    <a href="#inscricao" class="nav-cta">Quero participar</a>
+    <div class="nav-ctas">
+      <a href="#facilitadora" class="nav-cta secondary">Seja facilitadora</a>
+      <a href="#inscricao" class="nav-cta">Quero participar</a>
+    </div>
   </div>
 </nav>
 
@@ -478,19 +491,76 @@ p{margin:0 0 20px}
 </section>
 
 <section class="sec" id="carolina">
-  <div class="wrap carol">
-    <div class="portrait rv">
-      <!-- Para publicar a foto: troque este bloco por <img src="carolina.jpg" alt="Carolina Feres Busato"> -->
-      <p class="ph">Foto de<br>Carolina</p>
-    </div>
-    <div>
+  <div class="wrap">
+    <div class="carol">
       <p class="eyebrow rv">Quem conduz</p>
-      <h2 class="title rv">Carolina Feres Busato</h2>
+      <h2 class="title rv">Sobre a autora</h2>
+      <p class="rv" style="font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green-soft);margin:-8px 0 30px">Médica Nutróloga &middot; Líder do Movimento Conexão Preciosa</p>
+      <div class="portrait rv">
+        <img src="carolina.webp" alt="Carolina Feres Busato">
+      </div>
       <p class="quote rv">“A Palavra que Deus falou ao meu coração foi: AVANCE. Não pare. Não retroceda.”</p>
       <p class="rv">Olá, querida mulher! Seja muito bem-vinda, você que decidiu avançar no relacionamento e no conhecimento de Jesus. Essa é a melhor decisão da sua vida.</p>
       <p class="rv">A jornada que começa agora será linda, cheia de descobertas, ajustes, restaurações e crescimento. Será um tempo de aparar arestas, aprender, amadurecer, rir e também chorar.</p>
       <p class="rv">Minha oração é que o Espírito Santo use este material para fortalecer sua fé, renovar sua mente, moldar seu caráter e formar em você a imagem de Jesus.</p>
       <p class="sig rv">Carolina<small>Autora e facilitadora do Avance</small></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="facilitadora">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rv">Para quem já fez o Avance</p>
+    <h2 class="title rv" style="max-width:16em;margin-left:auto;margin-right:auto">Já fiz o curso e quero ser <em>facilitadora</em></h2>
+    <p class="lead rv narrow" style="margin:0 auto">Se o AVANCE já formou você, você também pode conduzir outras mulheres pelo mesmo caminho. Deixe seus dados e entramos em contato sobre a formação de facilitadoras.</p>
+
+    <div class="form-card">
+      <form id="form-facilitadora" novalidate>
+        <div class="field">
+          <label for="nome-facilitadora">Nome completo</label>
+          <input id="nome-facilitadora" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="whats-facilitadora">WhatsApp com DDD</label>
+          <input id="whats-facilitadora" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required>
+        </div>
+        <div class="field">
+          <label for="email-facilitadora">E-mail</label>
+          <input id="email-facilitadora" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="igreja-facilitadora">Igreja / cidade</label>
+          <input id="igreja-facilitadora" name="igreja" type="text">
+        </div>
+        <div class="field">
+          <label for="frequenta-facilitadora">Você frequenta alguma igreja?</label>
+          <select id="frequenta-facilitadora" name="frequenta">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Sou Membro da Conexão Família">Sou Membro da Conexão Família</option>
+            <option value="Sou membro da PIB Curitiba">Sou membro da PIB Curitiba</option>
+            <option value="Frequento outra igreja evangélica">Frequento outra igreja evangélica</option>
+            <option value="Frequento a igreja Católica">Frequento a igreja Católica</option>
+            <option value="Outra denominação/crença">Outra denominação/crença</option>
+            <option value="Não frequento igreja">Não frequento igreja</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="turma-facilitadora">Em qual turma você fez o Avance?</label>
+          <input id="turma-facilitadora" name="turma" type="text" placeholder="Ex.: turma 2025, com a Carolina">
+        </div>
+        <div class="field">
+          <label for="msg-facilitadora">Quer contar algo antes de começarmos? (opcional)</label>
+          <textarea id="msg-facilitadora" name="msg" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn">Quero ser facilitadora</button>
+        <p class="form-note">Ao enviar, o WhatsApp abre com sua mensagem pronta. É só tocar em enviar.</p>
+      </form>
+
+      <div class="ok" id="ok-facilitadora" hidden>
+        <div class="mark">✦</div>
+        <h3>Inscrição enviada</h3>
+        <p>Se o WhatsApp não abriu automaticamente, <a href="#" id="link-manual-facilitadora" style="color:var(--clay)">toque aqui para abrir a conversa</a>.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -520,7 +590,7 @@ p{margin:0 0 20px}
         </div>
         <div class="field">
           <label for="whats">WhatsApp com DDD</label>
-          <input id="whats" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 90000-0000" required>
+          <input id="whats" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required>
         </div>
         <div class="field">
           <label for="email">E-mail</label>
@@ -529,6 +599,18 @@ p{margin:0 0 20px}
         <div class="field">
           <label for="igreja">Igreja / cidade</label>
           <input id="igreja" name="igreja" type="text">
+        </div>
+        <div class="field">
+          <label for="frequenta">Você frequenta alguma igreja?</label>
+          <select id="frequenta" name="frequenta">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Sou Membro da Conexão Família">Sou Membro da Conexão Família</option>
+            <option value="Sou membro da PIB Curitiba">Sou membro da PIB Curitiba</option>
+            <option value="Frequento outra igreja evangélica">Frequento outra igreja evangélica</option>
+            <option value="Frequento a igreja Católica">Frequento a igreja Católica</option>
+            <option value="Outra denominação/crença">Outra denominação/crença</option>
+            <option value="Não frequento igreja">Não frequento igreja</option>
+          </select>
         </div>
         <div class="field">
           <label for="msg">Quer contar algo antes de começarmos? (opcional)</label>
@@ -581,34 +663,73 @@ var WHATSAPP = "5541999999999";
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  // formulário -> WhatsApp
-  var form = document.getElementById('form');
-  var ok = document.getElementById('ok');
-  var manual = document.getElementById('link-manual');
+  // máscara de celular: (41) 99999-9999
+  function maskPhone(el){
+    if (!el) return;
+    el.addEventListener('input', function(){
+      var v = el.value.replace(/\D/g, '').slice(0, 11);
+      var ddd = v.slice(0, 2);
+      var rest = v.slice(2);
+      var out = '';
+      if (ddd) out += '(' + ddd;
+      if (ddd.length === 2) out += ') ';
+      out += rest.slice(0, 5);
+      if (rest.length > 5) out += '-' + rest.slice(5, 9);
+      el.value = out;
+    });
+  }
+  maskPhone(document.getElementById('whats'));
+  maskPhone(document.getElementById('whats-facilitadora'));
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var nome = form.nome.value.trim();
-    var whats = form.whats.value.trim();
-    if (!nome || !whats) {
-      (!nome ? form.nome : form.whats).focus();
-      return;
-    }
+  // formulário -> WhatsApp
+  function wireForm(formId, okId, linkId, buildLinhas){
+    var form = document.getElementById(formId);
+    var ok = document.getElementById(okId);
+    var manual = document.getElementById(linkId);
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var nome = form.nome.value.trim();
+      var whats = form.whats.value.trim();
+      if (!nome || !whats) {
+        (!nome ? form.nome : form.whats).focus();
+        return;
+      }
+      var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildLinhas(form, nome, whats).join('\n'));
+      manual.href = url;
+      form.hidden = true;
+      ok.hidden = false;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+
+  wireForm('form', 'ok', 'link-manual', function(form, nome, whats){
     var linhas = [
       'Olá, Carolina! Quero me inscrever no AVANCE.',
       '',
       'Nome: ' + nome,
       'WhatsApp: ' + whats
     ];
-    if (form.email.value.trim())  linhas.push('E-mail: ' + form.email.value.trim());
-    if (form.igreja.value.trim()) linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
-    if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
+    if (form.email.value.trim())     linhas.push('E-mail: ' + form.email.value.trim());
+    if (form.igreja.value.trim())    linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
+    if (form.frequenta.value.trim()) linhas.push('Frequenta igreja: ' + form.frequenta.value.trim());
+    if (form.msg.value.trim())       linhas.push('', form.msg.value.trim());
+    return linhas;
+  });
 
-    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(linhas.join('\n'));
-    manual.href = url;
-    form.hidden = true;
-    ok.hidden = false;
-    window.open(url, '_blank', 'noopener');
+  wireForm('form-facilitadora', 'ok-facilitadora', 'link-manual-facilitadora', function(form, nome, whats){
+    var linhas = [
+      'Olá, Carolina! Já fiz o AVANCE e quero ser facilitadora.',
+      '',
+      'Nome: ' + nome,
+      'WhatsApp: ' + whats
+    ];
+    if (form.email.value.trim())     linhas.push('E-mail: ' + form.email.value.trim());
+    if (form.igreja.value.trim())    linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
+    if (form.frequenta.value.trim()) linhas.push('Frequenta igreja: ' + form.frequenta.value.trim());
+    if (form.turma.value.trim())     linhas.push('Turma: ' + form.turma.value.trim());
+    if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
+    return linhas;
   });
 })();
 </script>
