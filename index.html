@@ -510,7 +510,7 @@ p{margin:0 0 20px}
         </div>
         <div class="field">
           <label for="whats-facilitadora">WhatsApp com DDD</label>
-          <input id="whats-facilitadora" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 90000-0000" required>
+          <input id="whats-facilitadora" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required>
         </div>
         <div class="field">
           <label for="email-facilitadora">E-mail</label>
@@ -578,7 +578,7 @@ p{margin:0 0 20px}
         </div>
         <div class="field">
           <label for="whats">WhatsApp com DDD</label>
-          <input id="whats" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 90000-0000" required>
+          <input id="whats" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required>
         </div>
         <div class="field">
           <label for="email">E-mail</label>
@@ -650,6 +650,24 @@ var WHATSAPP = "5541999999999";
   } else {
     els.forEach(function(el){ el.classList.add('in'); });
   }
+
+  // máscara de celular: (41) 99999-9999
+  function maskPhone(el){
+    if (!el) return;
+    el.addEventListener('input', function(){
+      var v = el.value.replace(/\D/g, '').slice(0, 11);
+      var ddd = v.slice(0, 2);
+      var rest = v.slice(2);
+      var out = '';
+      if (ddd) out += '(' + ddd;
+      if (ddd.length === 2) out += ') ';
+      out += rest.slice(0, 5);
+      if (rest.length > 5) out += '-' + rest.slice(5, 9);
+      el.value = out;
+    });
+  }
+  maskPhone(document.getElementById('whats'));
+  maskPhone(document.getElementById('whats-facilitadora'));
 
   // formulário -> WhatsApp
   function wireForm(formId, okId, linkId, buildLinhas){
