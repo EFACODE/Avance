@@ -521,6 +521,18 @@ p{margin:0 0 20px}
           <input id="igreja-facilitadora" name="igreja" type="text">
         </div>
         <div class="field">
+          <label for="frequenta-facilitadora">Você frequenta alguma igreja?</label>
+          <select id="frequenta-facilitadora" name="frequenta">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Sou Membro da Conexão Família">Sou Membro da Conexão Família</option>
+            <option value="Sou membro da PIB Curitiba">Sou membro da PIB Curitiba</option>
+            <option value="Frequento outra igreja evangélica">Frequento outra igreja evangélica</option>
+            <option value="Frequento a igreja Católica">Frequento a igreja Católica</option>
+            <option value="Outra denominação/crença">Outra denominação/crença</option>
+            <option value="Não frequento igreja">Não frequento igreja</option>
+          </select>
+        </div>
+        <div class="field">
           <label for="turma-facilitadora">Em qual turma você fez o Avance?</label>
           <input id="turma-facilitadora" name="turma" type="text" placeholder="Ex.: turma 2025, com a Carolina">
         </div>
@@ -575,6 +587,18 @@ p{margin:0 0 20px}
         <div class="field">
           <label for="igreja">Igreja / cidade</label>
           <input id="igreja" name="igreja" type="text">
+        </div>
+        <div class="field">
+          <label for="frequenta">Você frequenta alguma igreja?</label>
+          <select id="frequenta" name="frequenta">
+            <option value="" disabled selected>Selecione</option>
+            <option value="Sou Membro da Conexão Família">Sou Membro da Conexão Família</option>
+            <option value="Sou membro da PIB Curitiba">Sou membro da PIB Curitiba</option>
+            <option value="Frequento outra igreja evangélica">Frequento outra igreja evangélica</option>
+            <option value="Frequento a igreja Católica">Frequento a igreja Católica</option>
+            <option value="Outra denominação/crença">Outra denominação/crença</option>
+            <option value="Não frequento igreja">Não frequento igreja</option>
+          </select>
         </div>
         <div class="field">
           <label for="msg">Quer contar algo antes de começarmos? (opcional)</label>
@@ -656,9 +680,10 @@ var WHATSAPP = "5541999999999";
       'Nome: ' + nome,
       'WhatsApp: ' + whats
     ];
-    if (form.email.value.trim())  linhas.push('E-mail: ' + form.email.value.trim());
-    if (form.igreja.value.trim()) linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
-    if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
+    if (form.email.value.trim())     linhas.push('E-mail: ' + form.email.value.trim());
+    if (form.igreja.value.trim())    linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
+    if (form.frequenta.value.trim()) linhas.push('Frequenta igreja: ' + form.frequenta.value.trim());
+    if (form.msg.value.trim())       linhas.push('', form.msg.value.trim());
     return linhas;
   });
 
@@ -669,9 +694,10 @@ var WHATSAPP = "5541999999999";
       'Nome: ' + nome,
       'WhatsApp: ' + whats
     ];
-    if (form.email.value.trim())  linhas.push('E-mail: ' + form.email.value.trim());
-    if (form.igreja.value.trim()) linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
-    if (form.turma.value.trim())  linhas.push('Turma: ' + form.turma.value.trim());
+    if (form.email.value.trim())     linhas.push('E-mail: ' + form.email.value.trim());
+    if (form.igreja.value.trim())    linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
+    if (form.frequenta.value.trim()) linhas.push('Frequenta igreja: ' + form.frequenta.value.trim());
+    if (form.turma.value.trim())     linhas.push('Turma: ' + form.turma.value.trim());
     if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
     return linhas;
   });
