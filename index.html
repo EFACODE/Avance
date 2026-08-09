@@ -309,6 +309,7 @@ p{margin:0 0 20px}
       <a href="#jornada">A jornada</a>
       <a href="#recursos">Recursos</a>
       <a href="#carolina">Carolina</a>
+      <a href="#facilitadora">Seja facilitadora</a>
     </div>
     <a href="#inscricao" class="nav-cta">Quero participar</a>
   </div>
@@ -495,6 +496,51 @@ p{margin:0 0 20px}
   </div>
 </section>
 
+<section class="sec sec--alt" id="facilitadora">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow rv">Para quem já fez o Avance</p>
+    <h2 class="title rv" style="max-width:16em;margin-left:auto;margin-right:auto">Já fiz o curso e quero ser <em>facilitadora</em></h2>
+    <p class="lead rv narrow" style="margin:0 auto">Se o AVANCE já formou você, você também pode conduzir outras mulheres pelo mesmo caminho. Deixe seus dados e entramos em contato sobre a formação de facilitadoras.</p>
+
+    <div class="form-card">
+      <form id="form-facilitadora" novalidate>
+        <div class="field">
+          <label for="nome-facilitadora">Nome completo</label>
+          <input id="nome-facilitadora" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="whats-facilitadora">WhatsApp com DDD</label>
+          <input id="whats-facilitadora" name="whats" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 90000-0000" required>
+        </div>
+        <div class="field">
+          <label for="email-facilitadora">E-mail</label>
+          <input id="email-facilitadora" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="igreja-facilitadora">Igreja / cidade</label>
+          <input id="igreja-facilitadora" name="igreja" type="text">
+        </div>
+        <div class="field">
+          <label for="turma-facilitadora">Em qual turma você fez o Avance?</label>
+          <input id="turma-facilitadora" name="turma" type="text" placeholder="Ex.: turma 2025, com a Carolina">
+        </div>
+        <div class="field">
+          <label for="msg-facilitadora">Quer contar algo antes de começarmos? (opcional)</label>
+          <textarea id="msg-facilitadora" name="msg" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn">Quero ser facilitadora</button>
+        <p class="form-note">Ao enviar, o WhatsApp abre com sua mensagem pronta. É só tocar em enviar.</p>
+      </form>
+
+      <div class="ok" id="ok-facilitadora" hidden>
+        <div class="mark">✦</div>
+        <h3>Inscrição enviada</h3>
+        <p>Se o WhatsApp não abriu automaticamente, <a href="#" id="link-manual-facilitadora" style="color:var(--clay)">toque aqui para abrir a conversa</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="final">
   <div class="wrap">
     <div class="rings" style="margin-bottom:40px"></div>
@@ -582,18 +628,28 @@ var WHATSAPP = "5541999999999";
   }
 
   // formulário -> WhatsApp
-  var form = document.getElementById('form');
-  var ok = document.getElementById('ok');
-  var manual = document.getElementById('link-manual');
+  function wireForm(formId, okId, linkId, buildLinhas){
+    var form = document.getElementById(formId);
+    var ok = document.getElementById(okId);
+    var manual = document.getElementById(linkId);
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var nome = form.nome.value.trim();
-    var whats = form.whats.value.trim();
-    if (!nome || !whats) {
-      (!nome ? form.nome : form.whats).focus();
-      return;
-    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var nome = form.nome.value.trim();
+      var whats = form.whats.value.trim();
+      if (!nome || !whats) {
+        (!nome ? form.nome : form.whats).focus();
+        return;
+      }
+      var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(buildLinhas(form, nome, whats).join('\n'));
+      manual.href = url;
+      form.hidden = true;
+      ok.hidden = false;
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+
+  wireForm('form', 'ok', 'link-manual', function(form, nome, whats){
     var linhas = [
       'Olá, Carolina! Quero me inscrever no AVANCE.',
       '',
@@ -603,12 +659,21 @@ var WHATSAPP = "5541999999999";
     if (form.email.value.trim())  linhas.push('E-mail: ' + form.email.value.trim());
     if (form.igreja.value.trim()) linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
     if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
+    return linhas;
+  });
 
-    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(linhas.join('\n'));
-    manual.href = url;
-    form.hidden = true;
-    ok.hidden = false;
-    window.open(url, '_blank', 'noopener');
+  wireForm('form-facilitadora', 'ok-facilitadora', 'link-manual-facilitadora', function(form, nome, whats){
+    var linhas = [
+      'Olá, Carolina! Já fiz o AVANCE e quero ser facilitadora.',
+      '',
+      'Nome: ' + nome,
+      'WhatsApp: ' + whats
+    ];
+    if (form.email.value.trim())  linhas.push('E-mail: ' + form.email.value.trim());
+    if (form.igreja.value.trim()) linhas.push('Igreja/cidade: ' + form.igreja.value.trim());
+    if (form.turma.value.trim())  linhas.push('Turma: ' + form.turma.value.trim());
+    if (form.msg.value.trim())    linhas.push('', form.msg.value.trim());
+    return linhas;
   });
 })();
 </script>
