@@ -12,8 +12,10 @@ capa.webp                   capa do material impresso
 carolina.webp               foto da autora (seção "Sobre a autora")
 thumb-planner.webp          prévia do card "Meu Planner Semanal"
 thumb-revestidas.webp       prévia do card "Revestidas de Cristo"
+thumb-workbook.webp         prévia do card "Workbook"
 planner-semanal.pdf         material para download
 revestidas-de-cristo.pdf    material para download
+workbook.pdf                material para download
 ```
 
 ## Rodar localmente
