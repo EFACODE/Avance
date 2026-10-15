@@ -36,6 +36,3 @@ Site 100% estático — sem passo de build. O Vercel detecta automaticamente
 - **`carolina.webp`** está em baixa resolução (183×275px, arquivo enviado
   pelo usuário). Fica visível em telas grandes/retina. Substitua por um
   arquivo de maior resolução quando disponível.
-- **Número de WhatsApp**: definido em `var WHATSAPP = "5541999999999"` no
-  final de `index.html` — troque pelo número real da Carolina antes de
-  divulgar o link.
